@@ -1,0 +1,1130 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIMULTANEOUS / 同時ターンサッカー</title><style>:root{font-family:Inter,"Segoe UI","Yu Gothic UI",sans-serif;color:#eaf2ef;background:#0c1419;font-synthesis:none;--muted:#93a9ac;--border:#2b3d43;--mint:#b7f87a;--blue:#65c8ff;--red:#ff927b}*{box-sizing:border-box}body{margin:0}button,select,input{font:inherit}button,select{cursor:pointer}button{border:1px solid transparent;border-radius:6px;padding:11px 15px;font-weight:650;transition:background .15s}button:disabled{opacity:.4;cursor:not-allowed}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--mint);outline-offset:3px}.primary{background:var(--mint);color:#17251c}.primary:hover:enabled{background:#d2ffab}.secondary{color:#d7e5e2;background:#22333a;border-color:#3a4e54}.secondary:hover:enabled{background:#32494f}.small{font-size:11px;padding:6px 9px}select,input{min-height:38px;color:#e8f1ec;background:#101f25;border:1px solid #3a4e54;border-radius:5px;padding:7px 10px;max-width:100%}input{width:110px}label{font-size:11px;color:var(--muted);display:flex;flex-direction:column;gap:6px}h1,h2,h3,p{margin-top:0}h1{font-size:27px;letter-spacing:.045em;margin:7px 0 0}h1 span{font-size:12px;color:var(--muted);font-weight:400;margin-left:18px;letter-spacing:.05em}h2{font-size:20px;margin:9px 0 12px}h3{font-size:13px;margin:0}.masthead{display:flex;align-items:center;justify-content:space-between;padding:26px 36px;border-bottom:1px solid var(--border)}.eyebrow{font-size:10px;letter-spacing:.16em;color:var(--muted);font-weight:650}.badge{font-size:10px;letter-spacing:.08em;border:1px solid var(--border);padding:7px 10px;border-radius:5px;color:#b9ccc8;white-space:nowrap}main{max-width:1660px;margin:auto;padding:24px 30px}.panel{background:#142229;border:1px solid var(--border);border-radius:10px}.setup{padding:16px 20px;display:flex;gap:18px;align-items:end;flex-wrap:wrap;margin-bottom:22px}.setup #mode{min-width:205px}.setup #newMatch{margin-left:auto}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 325px;gap:20px}.match{padding:22px;align-self:start}.scoreboard{display:flex;align-items:center;justify-content:center;gap:65px;margin:0 0 24px;text-align:center}.team{font-size:16px;font-weight:750;display:flex;gap:10px;align-items:center}.team small{font-size:9px;color:var(--muted);font-weight:400}.team-dot{width:9px;height:9px;background:currentColor;border-radius:50%}.blue{color:var(--blue)}.red{color:var(--red)}#score{font-size:43px;letter-spacing:.1em}#score span{font-size:26px;color:#69827f;margin:0 14px}#turnLabel{font-size:10px;letter-spacing:.06em;margin-top:5px}.pitch-heading{display:flex;justify-content:space-between;margin-bottom:12px;font-size:11px;color:#b9cec8}.pitch-wrap{background:#1b423a;border:1px solid #46665b;border-radius:7px;overflow:hidden}#pitch{display:block;width:100%;user-select:none;touch-action:manipulation}#pitch .hit{cursor:crosshair}#pitch .player{cursor:pointer}#pitch text{font-family:"Segoe UI",sans-serif;pointer-events:none}.legend{display:flex;gap:15px;flex-wrap:wrap;color:var(--muted);font-size:10px;padding:12px 0}.legend>span{display:flex;gap:5px;align-items:center}.line{width:18px;display:inline-block;border-top:2px dashed}.blue-line{color:var(--blue)}.red-line{color:var(--red)}.gray-line{color:#bccdc7}.transport{display:flex;gap:8px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:16px}.transport button{font-size:12px}.transport label{flex-direction:row;align-items:center;margin-left:auto}.transport select{min-height:32px;font-size:11px}.mono{font-family:Consolas,monospace;font-size:11px;color:var(--muted)}#notice{margin:14px 0 0;font-size:12px;line-height:1.7;color:#c9dfce;min-height:22px}.planner{padding:20px}.section-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}.muted{color:var(--muted);font-size:12px;line-height:1.8}.compact{font-size:11px;margin-bottom:13px}#roster{display:grid;gap:5px;margin-bottom:18px}.player-card{display:flex;align-items:center;justify-content:space-between;width:100%;background:#1a2d34;border:1px solid #32484f;padding:9px 10px;color:#d5e3e1;text-align:left;font-size:12px}.player-card.selected{border-color:var(--blue);background:#213e4a}.player-card .role{font-size:9px;color:var(--muted)}.player-card .control{color:var(--mint);font-size:10px}.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0 15px}.stat-grid>div{background:#0e1c22;padding:8px 4px;text-align:center;border-radius:4px;font-size:10px;color:var(--muted)}.stat-grid strong{display:block;font-size:18px;color:#e4eee9;margin-bottom:3px}.order-toolbar{display:flex;gap:8px;align-items:end;margin-bottom:10px}.order-toolbar label{flex:1}.order-toolbar select{font-size:12px;width:100%}#orders{padding-left:24px;font-size:12px;min-height:65px;margin:12px 0}#orders li{padding:6px 0;border-bottom:1px solid #25383e}#orders li>div{display:flex;align-items:center;justify-content:space-between;gap:3px}#orders .remove{background:transparent;color:#b6c8c4;padding:2px 7px;font-size:13px}#planSummary{padding:10px;background:#1d3035;color:var(--mint);border-radius:4px}.skill-note{font-size:11px;color:var(--muted);line-height:1.8;padding-top:12px;border-top:1px solid var(--border)}.lower-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;margin-top:20px}.events,.lab{padding:23px}.events h2{font-size:18px}#events{height:275px;overflow:auto;font-size:12px;line-height:1.7}.event{padding:7px 0;border-bottom:1px solid #26383d;display:flex;gap:12px}.event .time{color:#7f9b9d;font:10px Consolas,monospace;min-width:60px;padding-top:4px}.event.goal{color:var(--mint);font-weight:700}.batch-controls{display:flex;gap:10px;flex-wrap:wrap}.batch-controls select{font-size:12px}.lab p{font-size:12px}#batchStatus{margin:12px 0;color:var(--muted)}progress{width:100%;margin-top:12px;accent-color:var(--mint)}table{border-collapse:collapse;width:100%;font-size:12px;margin-bottom:15px}th,td{padding:9px 7px;border-bottom:1px solid #2b3d43;text-align:right}th:first-child,td:first-child{text-align:left}th{font-size:11px;color:var(--muted)}.downloads{display:flex;gap:9px}.downloads button{font-size:12px}details{margin-top:15px;color:var(--muted);font-size:11px}summary{cursor:pointer}pre{overflow:auto;max-height:320px;font-size:10px}footer{color:#738d90;font-size:11px;line-height:1.9;margin:25px 0 0;text-align:center}[hidden]{display:none!important}@media(max-width:1100px){main{padding:15px}.workspace{grid-template-columns:minmax(0,1fr) 290px}.match{padding:14px}.scoreboard{gap:25px}.team small{display:none}.transport label{margin-left:0}.masthead{padding:20px}.setup{gap:12px}}@media(max-width:800px){.workspace,.lower-grid{grid-template-columns:1fr}.planner{order:2}h1{font-size:21px}h1 span{display:block;margin:6px 0}.masthead>.badge{display:none}.setup #newMatch{margin-left:0}.scoreboard{gap:30px}}
+.game-nav{position:sticky;top:0;z-index:20;display:flex;gap:10px;justify-content:center;padding:10px;background:#0c1419f5;border-bottom:1px solid var(--border)}.game-nav a{color:#dff3d0;text-decoration:none;font-size:12px;padding:8px 12px;border:1px solid #3a4e54;border-radius:5px;background:#1d3035}.game-nav a:hover{background:#345047}#game,#commands,#simulation{scroll-margin-top:65px}.settings{margin:0 0 18px;padding:12px 16px}.settings>summary{font-size:13px;color:#dfede5}.settings>summary span{font-size:11px;color:var(--muted);margin-left:12px}.settings .setup{margin:12px 0 0;padding:0}.settings:not([open]) .setup{display:none}@media(max-width:800px){.masthead{padding:12px 16px}.masthead h1{font-size:19px}.masthead h1 span{display:none}.masthead .eyebrow{font-size:8px}.game-nav{gap:6px;padding:7px}.game-nav a{font-size:11px;padding:8px}.scoreboard{gap:24px;margin-bottom:12px}#score{font-size:31px}.pitch-heading{margin-bottom:8px}.settings{padding:10px 12px;margin-bottom:12px}.settings>summary span{font-size:9px}.legend{gap:8px;font-size:9px}.transport{padding-top:10px}.transport label{display:none}main{padding:12px}}
+.log-filter{flex-direction:row;align-items:center;gap:8px;margin-bottom:10px}.log-filter input{width:16px;min-height:16px;accent-color:var(--mint)}.event.manual-event{border-left:3px solid var(--mint);background:#243c35;padding:8px 10px;margin:4px 0;border-radius:4px;color:#f2ffe9}.manual-tag{display:inline-block;font-size:10px;color:var(--mint);margin-right:5px}
+.turn-owner{font-size:13px;font-weight:700;letter-spacing:.04em;border-bottom:1px solid var(--border);padding:0 0 12px;margin-bottom:15px}.handoff{max-width:700px;margin:60px auto;min-height:320px;text-align:center;padding:60px 25px}.handoff h2{font-size:25px;margin-top:25px}.handoff p{color:var(--muted);line-height:1.9}.handoff button{margin-top:20px}#matchJson{margin-top:12px}
+/* Touch layout: desktop command desk and mouse input remain available. */
+.mobile-controls,.portrait-tip,.touch-help{display:none}
+.board-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.board-tools button{font-size:12px}.board-tools span{font-size:11px;color:var(--muted)}
+.pitch-wrap{overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+#pitch{touch-action:pan-x pan-y pinch-zoom}
+.pitch-wrap.expanded{max-height:65svh}
+.pitch-wrap.expanded #pitch{width:max(100%,1144px);max-height:none}
+.touch-pending{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px;background:#383925;border:1px solid #b5a75b;border-radius:6px;margin-top:8px}
+.touch-pending>span{flex:1;min-width:140px;font-size:13px;color:#ffe886}
+@media (pointer:coarse),(max-width:1000px){
+  button,select,input,.game-nav a{min-height:44px}select,input{font-size:16px}
+  #orders .remove{min-width:44px;min-height:44px}.small{font-size:13px}
+  .workspace,.lower-grid{grid-template-columns:minmax(0,1fr)}
+  .mobile-controls{display:grid;grid-template-columns:minmax(100px,1fr) minmax(160px,2fr);gap:8px}
+  .mobile-controls select{width:100%}.mobile-controls label{min-width:0}
+  #quickStats{grid-column:1/-1;margin:0;font-size:12px;line-height:1.6}
+  .touch-help{display:block;font-size:11px;color:var(--muted);margin:8px 0}
+  .board-tools span{display:none}.board-tools button{flex:1}
+  .planner{padding:14px}#roster{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+  .transport{gap:8px}.transport #execute{flex:1;min-width:180px}
+  .match{padding:10px}.turn-owner{margin-bottom:6px;padding-bottom:6px}
+  .scoreboard{margin-bottom:6px}.legend{padding:6px 0}
+  .handoff{margin:15px auto;padding:24px 16px;min-height:0}
+  .handoff h2{font-size:22px;margin-top:12px}.handoff button{min-height:48px}
+  .setup #mode{min-width:0}.setup label{max-width:100%}
+  .game-nav a{display:flex;align-items:center}.settings summary{min-height:44px;padding-top:10px}
+}
+@media(max-width:1000px) and (orientation:landscape){
+  main{padding:8px max(8px,env(safe-area-inset-right)) 8px max(8px,env(safe-area-inset-left))}
+  .masthead{display:none}.game-nav{position:static;padding:4px}.game-nav a{padding:4px 10px}
+  .scoreboard{gap:28px}#score{font-size:24px}.team{font-size:13px}
+  .mobile-controls{grid-template-columns:1fr 2fr 2fr;align-items:center}
+  #quickStats{grid-column:auto}.mobile-controls label{gap:2px}
+  .board-tools{margin:6px 0}.board-tools button{flex:none}
+  #pitch{max-height:max(190px,calc(100svh - 130px))}
+  .pitch-wrap.expanded{max-height:65svh}
+  #game,#commands,#simulation{scroll-margin-top:8px}
+}
+@media(max-width:600px) and (orientation:portrait){
+  .portrait-tip{display:block;color:#f9dd7e;font-size:12px;margin:8px 0}
+  .scoreboard{gap:16px}.team{font-size:13px}main{padding:8px}
+}
+/* Landscape keeps the whole pitch beside the touch command controls. */
+@media(min-width:600px) and (max-width:1000px) and (orientation:landscape){
+  #game{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:6px 12px;align-items:start}
+  #game>.scoreboard{grid-column:1;grid-row:1;margin:0}
+  #game>.turn-owner{grid-column:2;grid-row:1;align-self:center;font-size:12px}
+  #game>.pitch-heading{grid-column:1;grid-row:2;font-size:10px;margin:0}
+  #game>.mobile-controls{grid-column:2;grid-row:2 / 5;display:grid;grid-template-columns:1fr;gap:4px}
+  #game #quickStats{font-size:11px;line-height:1.4}
+  #game>.pitch-wrap{grid-column:1;grid-row:3 / 7;align-self:center;width:100%}
+  #game>.board-tools{grid-column:2;grid-row:5;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:4px}
+  #game>.board-tools button{font-size:10px;padding:6px 3px}
+  #game>.transport{grid-column:2;grid-row:6;margin:0;padding-top:4px;gap:4px}
+  #game>.transport #execute{min-width:100%;font-size:11px;padding:8px 4px}
+  #game>.transport label,#game #tickLabel{display:none}
+  #game>.transport #pause,#game>.transport #step{flex:1;padding:6px;font-size:11px}
+  #game>.touch-pending{grid-column:1/-1;grid-row:7;margin:0}
+  #game>.legend{grid-column:1/-1;grid-row:8}
+  #game>.touch-help{grid-column:1/-1;grid-row:9;margin:0}
+  #game>#notice{grid-column:1/-1;grid-row:10;margin:0}
+  #game>#matchJson{grid-column:1/-1;grid-row:11}
+}
+</style>
+</head>
+<body>
+  <header class="masthead"><div><span class="eyebrow">TACTICAL FOOTBALL LAB · MVP 0.1</span><h1>SIMULTANEOUS<span>同時ターンサッカー</span></h1></div><span class="badge">LOCAL / SEED REPLAY</span></header>
+  <nav class="game-nav" aria-label="ゲーム画面内の移動"><a href="#game">⚽ ゲーム盤面</a><a href="#commands">選手への指示</a><a href="#simulation">自動対戦・統計</a></nav>
+  <main>
+    <details class="settings panel"><summary>試合設定 <span>モード・ターン数・戦術・新しい試合</span></summary><section class="setup" aria-label="試合設定">
+      <label>モード<select id="mode"><option value="play">プレイ · 青チームを指揮</option><option value="hotseat">ローカル対人戦 · 青 vs 赤</option><option value="watch">AI vs AI · 観戦</option></select></label>
+      <label>試合時間<select id="turns"><option value="10">10ターン</option><option value="20" selected>20ターン（暫定標準）</option></select></label>
+      <label>乱数シード<input id="seed" type="number" min="0" max="4294967295" value="42"></label>
+      <label>青の戦術<select id="blueTactic"><option value="balanced">バランス</option><option value="aggressive">攻撃的</option><option value="defensive">守備的</option></select></label>
+      <label>赤の戦術<select id="redTactic"><option value="balanced">バランス</option><option value="aggressive">攻撃的</option><option value="defensive">守備的</option></select></label>
+      <button id="newMatch" class="secondary">新しい試合</button>
+    </section></details>
+    <section id="handoff" class="panel handoff" hidden aria-labelledby="handoffTitle"><span class="eyebrow">LOCAL HOTSEAT</span><h2 id="handoffTitle"></h2><p id="handoffText"></p><button id="ready" class="primary"></button></section>
+    <div class="workspace" id="workspace">
+      <section id="game" class="match panel">
+        <div id="activeTeam" class="turn-owner blue" role="status"></div>
+        <div class="scoreboard"><div class="team blue"><span class="team-dot"></span> BLUE <small>HOME</small></div><div><strong id="score">0 <span>:</span> 0</strong><div id="turnLabel" class="eyebrow"></div></div><div class="team red">RED <small>AWAY</small><span class="team-dot"></span></div></div>
+        <div class="pitch-heading"><span id="phaseLabel"></span><span id="attackDirection"></span></div>
+        <p class="portrait-tip">横向き推奨。細かい位置は「拡大」で選べます。</p>
+        <div class="mobile-controls">
+          <label>操作選手<select id="quickPlayer"></select></label>
+          <label>予約する行動<select id="quickAction"></select></label>
+          <p id="quickStats" class="mono"></p>
+        </div>
+        <div class="board-tools"><button id="zoom" class="secondary">盤面を拡大</button><button id="undo" class="secondary">最後の行動を取消</button><span id="zoomHelp">拡大中は盤面をスクロールできます</span></div>
+        <div class="pitch-wrap"><svg id="pitch" viewBox="0 0 1040 560" role="img" aria-label="24×12区間のサッカーフィールド。指示中のチームの選手を選択し交点をクリックして指示します。"></svg></div>
+        <div id="touchPending" class="touch-pending" hidden><span id="targetLabel" role="status"></span><button id="acceptTarget" class="primary">この位置へ追加</button><button id="cancelTarget" class="secondary">選択を取消</button></div>
+        <p class="touch-help">タッチ：行動を選択 → 交点をタップ →「この位置へ追加」。違う交点をタップすると選び直せます。</p>
+        <div class="legend"><span><i class="line blue-line"></i>操作選手：全経路</span><span><i class="line gray-line"></i>味方AI：2交点</span><span><i class="line red-line"></i>敵AI：1交点</span><span>◌ 空中の非接触交点</span><span>□ GK / ● ボール</span></div>
+        <div class="transport"><button id="execute" class="primary">指示確定 → 同時実行</button><button id="pause" class="secondary" disabled>一時停止</button><button id="step" class="secondary">1 tick</button><label>再生速度<select id="speed"><option value="180">1×</option><option value="70">3×</option><option value="15">高速</option></select></label><span id="tickLabel" class="mono">TICK 00</span></div>
+        <p id="notice" role="status">青の2選手に指示して、同時実行してください。</p>
+        <button id="matchJson" class="secondary" hidden>この試合の対戦ログ JSON ↓</button>
+      </section>
+      <aside id="commands" class="planner panel">
+        <div class="section-heading"><span class="eyebrow">COMMAND DESK</span><span id="controlCount" class="badge">2 / 2</span></div>
+        <h2>2人を指揮する</h2><p class="muted compact">「選手を選択」モードで味方をクリックすると操作枠を切替。行動入力中は選手の上も着地点になります。選手カードではいつでも操作対象を変更できます。</p>
+        <div id="roster"></div>
+        <div id="selectedInfo"></div>
+        <div class="order-toolbar"><label>次に予約する行動<select id="action"></select></label></div>
+        <button id="addWait" class="small secondary">待機を追加（4 tick / 0 AP）</button>
+        <p class="muted compact">行動を選んでから交点や選手をクリックすると、その位置へ予約します。移動はボール保持で自動的にドリブルへ。保持中・受取待機後は2 AP/歩を予約し、非保持なら実消費1 AP/歩。通常移動中の獲得は余力から追加1 AP/歩。実行後は自動で次ターンの指示へ進みます。</p>
+        <div class="section-heading"><h3>予約された行動</h3><button id="clear" class="small secondary">全消去</button></div>
+        <ol id="orders"></ol><p id="planSummary" class="mono"></p>
+        <div class="skill-note">SP / スキルはデータ表示のみ。<br>未予約APが競り合いの余力になります。</div>
+      </aside>
+    </div>
+    <div class="lower-grid" id="lowerPanels">
+      <section class="panel events"><div class="section-heading"><div><span class="eyebrow">MATCH EVENTS</span><h2>ターンの記録</h2></div><span class="badge">固定ターン</span></div><label class="log-filter"><input type="checkbox" id="manualLogs">操作した選手のログだけ表示</label><p class="muted compact">明るい枠と「操作：青◯／赤◯」は、そのターンに指示した選手の出来事です。</p><div id="events" aria-live="polite"></div></section>
+      <section id="simulation" class="panel lab"><span class="eyebrow">SIMULATION BENCH</span><h2>100試合で、戦術を検証する。</h2><p class="muted">設定中の両チーム戦術を使用。同じシードで左右を交替し、10 / 20ターンを比較します。</p>
+        <div class="batch-controls"><select id="batchTurns" aria-label="自動対戦のターン数"><option value="both">10・20ターン 各100試合</option><option value="10">10ターン 100試合</option><option value="20">20ターン 100試合</option></select><button id="batch" class="primary">自動対戦を実行</button></div>
+        <progress id="progress" max="200" value="0" hidden></progress><p id="batchStatus" role="status">まだ実行していません</p><div id="summary"></div>
+        <div class="downloads"><button id="csv" class="secondary" disabled>試合別 CSV ↓</button><button id="json" class="secondary" disabled>集計 JSON ↓</button></div>
+        <details><summary>全指標・分布を見る</summary><pre id="allStats">自動対戦後に表示します。</pre></details>
+      </section>
+    </div>
+    <footer>実験ルール：オフサイド・ファウルなし / 体力低下の能力ペナルティなし / 保持者が変わっても予約は継続。<br>統計は面白さの証明ではありません。思考時間、連携、操作負担、判定への納得感をプレイで確認してください。</footer>
+  </main>
+  <script>
+const modules = {};
+modules.config = (() => {
+// All balance parameters live here. Times are integer ticks (1 tick = 0.25).
+const CONFIG = {
+  defaultTurns: 20,
+  width: 24, height: 12, goalY: [5, 6, 7],
+  stats: { agility: 2, physical: 2, technique: 2, stamina: 100, sp: 3 },
+  apByAgility: { 1: 4, 2: 5, 3: 6 },
+  halftime: { stamina: 60, sp: 1 },
+  timing: { move: 4, wait: 4, kick: 1, pass: 2, shot: 1 },
+  maxActions: 32,
+  actions: {
+    wait: { cost: 0 },
+    move: { cost: 1 }, dribble: { cost: 2 },
+    pass: { cost: 1, range: 3, airborne: 0 },
+    longPass: { cost: 2, range: 6, airborne: 0 },
+    airPass: { cost: 2, range: 6, airborne: 2 },
+    clear: { cost: 3, range: 9, airborne: 3, launchProtected: 2, gkOnly: true },
+    shot: { cost: 2, range: 3, shot: true },
+    longShot: { cost: 3, range: 6, shot: true }
+  },
+  contact: { primary: 2, waiting: 2, side: 1, behind: -1, full: -1, cap: 2, decisive: 3, narrowWin: 0.5, reserveLoss: 1 },
+  shooting: {
+    distance: [0, 2, 1, 0, -1, -1, -2],
+    front: 1, diagonal: 0, acute: -1,
+    accuracy: [{ min: 8, exact: 0.9, near: 0.1 }, { min: 5, exact: 0.7, near: 0.25 }, { min: -999, exact: 0.5, near: 0.35 }],
+    saveRadius: 1, samePoint: 2, gkReserveWeight: 0.4
+  },
+  ai: {
+    aggressive: { reserve: 0, defenseReserve: 1, passChance: 0.65, shotReserve: 0, advance: 7 },
+    balanced: { reserve: 1, defenseReserve: 2, passChance: 0.8, shotReserve: 1, advance: 5 },
+    defensive: { reserve: 2, defenseReserve: 3, passChance: 0.9, shotReserve: 2, advance: 3 }
+  },
+  formation: [[1, 6], [7, 3], [7, 9], [10, 4], [10, 8]],
+  safetyTickLimit: 256
+};
+const LABELS = { move: '移動', wait: '待機（パス受け取り）', dribble: 'ドリブル（自動）', pass: 'ショートパス', longPass: '地上ロングパス', airPass: '空中ロングパス', clear: 'クリア', shot: 'シュート', longShot: 'ロングシュート' };
+
+return {CONFIG,LABELS};
+})();
+modules.engine = (() => {
+const { CONFIG: C, LABELS } = modules.config;
+const playerName = p => `${p.team === 0 ? '青' : '赤'}${p.number}`;
+
+const clone = obj => structuredClone(obj);
+const distance = (a, b) => Math.max(Math.abs(a.x - b.x), Math.abs(a.y - b.y));
+const same = (a, b) => a.x === b.x && a.y === b.y;
+const inside = p => p.x >= 0 && p.x <= C.width && p.y >= 0 && p.y <= C.height;
+const maxAP = p => C.apByAgility[p.agility];
+const player = (s, id) => s.players.find(p => p.id === id);
+const direction = (s, team) => (team === s.leftTeam ? 1 : -1);
+const goalX = (s, team) => direction(s, team) === 1 ? C.width : 0;
+function random(s) {
+  s.rng = (s.rng + 0x6D2B79F5) >>> 0;
+  let t = s.rng;
+  t = Math.imul(t ^ t >>> 15, t | 1);
+  t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+  return ((t ^ t >>> 14) >>> 0) / 4294967296;
+}
+const jitter = s => Math.floor(random(s) * 3) - 1;
+function path(a, b) {
+  let x = a.x, y = a.y;
+  const out = [], dx = Math.abs(b.x - x), dy = -Math.abs(b.y - y);
+  const sx = x < b.x ? 1 : -1, sy = y < b.y ? 1 : -1;
+  let err = dx + dy;
+  while (x !== b.x || y !== b.y) {
+    const e = 2 * err;
+    if (e >= dy) { err += dy; x += sx; }
+    if (e <= dx) { err += dx; y += sy; }
+    out.push({ x, y });
+  }
+  return out;
+}
+function airborneIndices(route, count) {
+  const n = Math.min(count, Math.max(0, route.length - 1));
+  const start = Math.floor((route.length - 1 - n) / 2);
+  return Array.from({ length: n }, (_, i) => start + i);
+}
+function protectedFlightIndices(route, type) {
+  const rule = C.actions[type];
+  const launch = Array.from({ length: Math.min(rule.launchProtected || 0, Math.max(0, route.length - 1)) }, (_, i) => i);
+  return [...new Set([...launch, ...airborneIndices(route, rule.airborne || 0)])].sort((a, b) => a - b);
+}
+function gkSaveValue(s, p, samePoint) {
+  return p.technique * C.contact.primary + p.physical + p.reserve * C.shooting.gkReserveWeight + (samePoint ? C.shooting.samePoint : 0) + jitter(s);
+}
+const stat = () => ({ goals: 0, shots: 0, onTarget: 0, passes: 0, completedPasses: 0, steals: 0, deflections: 0, possessionChanges: 0, goalAreaArrivals: 0, forwardDistance: 0, ballDistanceSamples: 0, looseTicks: 0, idlePlayers: 0, saves: 0, offTarget: 0 });
+function createMatch({ seed = 1, turns = C.defaultTurns, leftTeam = 0, tactics = ['balanced', 'balanced'] } = {}) {
+  if (![10, 20].includes(turns)) throw new Error('試合は10または20ターンです');
+  const s = { seed: seed >>> 0, rng: seed >>> 0, totalTurns: turns, turn: 1, leftTeam, initialLeftTeam: leftTeam, tactics, score: [0, 0], players: [], ball: { x: 12, y: 6, owner: null, flight: null, lastTeam: null }, phase: 'planning', tick: 0, events: [], turnEvents: [], stats: [stat(), stat()], totalTicks: 0, lastOwner: null, kickoffTeam: leftTeam, restart: null };
+  for (let team = 0; team < 2; team++) for (let i = 0; i < 5; i++) s.players.push({ id: `${team}-${i}`, team, number: i + 1, gk: i === 0, ...C.stats, x: 0, y: 0, plan: [], reserved: 0, reserve: maxAP(C.stats), spent: 0, cursor: 0, pending: null, stopped: false, moved: false, facing: { x: team === leftTeam ? 1 : -1, y: 0 } });
+  formation(s, s.kickoffTeam);
+  return s;
+}
+function formation(s, team) {
+  for (const p of s.players) {
+    const [x, y] = C.formation[p.number - 1];
+    p.x = direction(s, p.team) === 1 ? x : C.width - x; p.y = y;
+    p.facing = { x: direction(s, p.team), y: 0 };
+  }
+  const p = player(s, `${team}-3`); p.x = 12; p.y = 6;
+  s.ball = { x: 12, y: 6, owner: p.id, flight: null, lastTeam: team };
+  s.lastOwner = p.id;
+}
+function validatePlan(s, id, actions) {
+  const p = player(s, id);
+  if (!p) return { valid: false, error: '選手がいません' };
+  if (actions.length > C.maxActions) return { valid: false, error: `予約は最大${C.maxActions}行動です` };
+  let at = { x: p.x, y: p.y }, cost = 0, holding = s.ball.owner === id;
+  for (const a of actions) {
+    const rule = C.actions[a.type];
+    if (a.type === 'wait') { cost += rule.cost; continue; }
+    if (!rule || !a.to || !Number.isInteger(a.to.x) || !Number.isInteger(a.to.y) || !inside(a.to)) return { valid: false, error: '無効な行動または盤外です' };
+    if (a.type === 'move' || a.type === 'dribble') {
+      if (distance(at, a.to) !== 1) return { valid: false, error: '移動は隣接交点を指定してください' };
+      if (holding && a.type === 'move') return { valid: false, error: '保持中はドリブルを指定してください' };
+      if (a.type === 'dribble') holding = true; // Planned reception, not a guarantee.
+      at = a.to;
+    } else {
+      if (distance(at, a.to) < 1 || distance(at, a.to) > rule.range) return { valid: false, error: `射程は1〜${rule.range}交点です` };
+      if (rule.gkOnly && !p.gk) return { valid: false, error: 'クリアはGK専用です' };
+      if (rule.shot && (a.to.x !== goalX(s, p.team) || !C.goalY.includes(a.to.y))) return { valid: false, error: '相手ゴールの3交点を指定してください' };
+      holding = false;
+    }
+    cost += rule.cost;
+  }
+  return cost <= maxAP(p) ? { valid: true, cost, reserve: maxAP(p) - cost } : { valid: false, error: 'APが不足しています', cost };
+}
+function setPlan(s, id, actions) {
+  if (s.phase !== 'planning') throw new Error('指示受付時間ではありません');
+  const result = validatePlan(s, id, actions);
+  if (!result.valid) throw new Error(result.error);
+  const p = player(s, id); p.plan = clone(actions); p.reserved = result.cost; p.reserve = result.reserve;
+  return result;
+}
+function emit(s, type, text, data = {}) {
+  const players = [...new Set([...(data.players || []), ...(data.player ? [data.player] : [])])];
+  const controlledPlayers = players.filter(id => (s.manualByTurn?.[s.turn] || []).includes(id));
+  s.events.push({ turn: s.turn, tick: s.tick, type, text, ...data, players, controlledPlayers });
+}
+function spend(p, n) { p.spent += n; p.stamina = Math.max(0, p.stamina - n); }
+function own(s, p, reason) {
+  const prior = s.lastOwner && player(s, s.lastOwner);
+  if (prior && prior.id !== p.id) {
+    s.stats[p.team].possessionChanges++;
+    if (prior.team !== p.team) s.stats[p.team].steals++;
+  }
+  s.ball.owner = p.id; s.ball.x = p.x; s.ball.y = p.y; s.ball.lastTeam = p.team; s.lastOwner = p.id; s.ball.flight = null;
+  emit(s, 'possession', `${p.team === 0 ? '青' : '赤'}${p.number}が保持 (${reason})`, { player: p.id, players: prior ? [prior.id, p.id] : [p.id] });
+}
+function modifier(p, opponent, waiting) {
+  let m = waiting ? C.contact.waiting : 0;
+  if (!waiting && opponent) {
+    const dx = p.x - opponent.x, dy = p.y - opponent.y;
+    const dot = dx * opponent.facing.x + dy * opponent.facing.y;
+    m += dot < 0 ? C.contact.behind : dot === 0 ? C.contact.side : 0;
+  }
+  if (p.reserved === maxAP(p)) m += C.contact.full;
+  return Math.max(-C.contact.cap, Math.min(C.contact.cap, m));
+}
+function contestValue(s, p, kind = 'ball', mod = 0) {
+  return (kind === 'body' ? p.physical * C.contact.primary + p.technique : p.technique * C.contact.primary + p.physical) + p.reserve + mod + jitter(s);
+}
+function deflect(s, at, vector, team, actors = []) {
+  const options = [];
+  for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
+    if (!dx && !dy) continue;
+    const p = { x: at.x + dx, y: at.y + dy };
+    if (!s.players.some(q => same(q, p))) options.push({ ...p, priority: dx * vector.x + dy * vector.y, tie: random(s) });
+  }
+  options.sort((a, b) => b.priority - a.priority || a.tie - b.tie);
+  const target = options[0] || at;
+  s.ball.owner = null; s.ball.flight = null; s.ball.x = target.x; s.ball.y = target.y; s.ball.lastTeam = team;
+  s.stats[team].deflections++;
+  emit(s, 'deflect', 'ボールが弾かれてルーズに', { players: actors });
+  if (!inside(target)) out(s, target, team);
+}
+function out(s, at, lastTeam) {
+  s.restart = { team: 1 - lastTeam, x: Math.max(1, Math.min(C.width - 1, at.x)), y: Math.max(1, Math.min(C.height - 1, at.y)) };
+  s.ball.flight = null; s.ball.owner = null;
+  emit(s, 'out', 'アウト：次ターンは相手ボールで再開');
+}
+function shotBonus(p, to) {
+  const d = distance(p, to), dy = Math.abs(to.y - p.y), dx = Math.abs(to.x - p.x);
+  return (C.shooting.distance[d] ?? -2) + (dy === 0 ? C.shooting.front : dy > dx ? C.shooting.acute : C.shooting.diagonal);
+}
+function kick(s, p, a) {
+  const rule = C.actions[a.type];
+  if (s.ball.owner !== p.id || distance(p, a.to) > rule.range || distance(p, a.to) < 1) {
+    emit(s, 'skip', `${playerName(p)}：${LABELS[a.type]}を省略（${s.ball.owner !== p.id ? 'ボールを保持していない' : '射程外'}）。後続の予約を継続`, { player: p.id }); return;
+  }
+  spend(p, rule.cost);
+  let to = { ...a.to }, bonus = 0;
+  if (rule.shot) {
+    s.stats[p.team].shots++; bonus = shotBonus(p, to);
+    const accuracy = p.technique * 2 + p.reserve + bonus;
+    const row = C.shooting.accuracy.find(r => accuracy >= r.min), r = random(s);
+    const offset = r < row.exact ? 0 : r < row.exact + row.near ? 1 : 2;
+    if (offset) to.y += (random(s) < 0.5 ? -1 : 1) * offset;
+    if (C.goalY.includes(to.y)) s.stats[p.team].onTarget++; else s.stats[p.team].offTarget++;
+  } else if (a.type !== 'clear') s.stats[p.team].passes++;
+  const route = path(p, to);
+  s.ball.owner = null; s.ball.lastTeam = p.team;
+  s.ball.flight = { type: a.type, team: p.team, source: p.id, route, index: 0, nextTick: s.tick + (rule.shot ? C.timing.shot : C.timing.pass), airborne: protectedFlightIndices(route, a.type), bonus, attemptedGK: [], attemptedBlocks: [] };
+  emit(s, rule.shot ? 'shot' : 'pass', `${playerName(p)}が${LABELS[a.type]} → (${to.x},${to.y})。${rule.cost}AP消費${rule.shot ? (C.goalY.includes(to.y) ? '／枠内への軌道' : '／狙いがずれて枠外への軌道') : ''}`, { player: p.id });
+}
+function startTurn(s) {
+  if (s.phase !== 'planning') throw new Error('ターン開始不可');
+  // Validate all plans before mutating any execution state.
+  for (const p of s.players) if (!validatePlan(s, p.id, p.plan).valid) throw new Error(`無効な予約: ${p.id}`);
+  s.phase = 'running'; s.tick = 0; s.turnEventStart = s.events.length;
+  for (const p of s.players) { p.cursor = 0; p.pending = null; p.stopped = false; p.spent = 0; p.moved = false; p.reserve = maxAP(p) - p.reserved; }
+}
+function schedule(s, p) {
+  if (p.pending || p.stopped || p.cursor >= p.plan.length) return;
+  const a = p.plan[p.cursor++];
+  const movement = a.type === 'move' || a.type === 'dribble';
+  p.pending = { a, due: s.tick + (a.type === 'wait' ? C.timing.wait : movement ? C.timing.move : C.timing.kick), movement };
+}
+// Segment intersection includes swaps and diagonal crossings at equal time.
+function crosses(a, b, c, d) {
+  const vx = (b.x - a.x) - (d.x - c.x), vy = (b.y - a.y) - (d.y - c.y);
+  const dx = c.x - a.x, dy = c.y - a.y;
+  if (vx === 0 && vy === 0) return same(b, d);
+  const t = vx !== 0 ? dx / vx : dy / vy;
+  return t > 0 && t <= 1 && Math.abs(vx * t - dx) < 1e-8 && Math.abs(vy * t - dy) < 1e-8;
+}
+function resolveMoves(s, due) {
+  const old = new Map(s.players.map(p => [p.id, { x: p.x, y: p.y }]));
+  const targets = new Map();
+  for (const p of due) {
+    const a = p.pending.a, holding = s.ball.owner === p.id;
+    if (distance(p, a.to) !== 1) { p.stopped = true; p.pending = null; continue; }
+    if (holding && a.type === 'move' && p.reserve < 1) {
+      p.stopped = true; p.pending = null; emit(s, 'stop', `${playerName(p)}: 追加AP不足、保持して停止`, { player: p.id }); continue;
+    }
+    targets.set(p.id, a.to);
+  }
+  const blocked = new Set(), pairs = [];
+  for (let i = 0; i < s.players.length; i++) for (let j = i + 1; j < s.players.length; j++) {
+    const a = s.players[i], b = s.players[j];
+    if (a.team === b.team || (!targets.has(a.id) && !targets.has(b.id))) continue;
+    const ta = targets.get(a.id) || a, tb = targets.get(b.id) || b;
+    if (same(ta, tb) || crosses(a, ta, b, tb)) pairs.push({ a, b, tie: random(s) });
+  }
+  // Seeded pair ordering avoids a fixed blue/red processing advantage.
+  pairs.sort((a, b) => a.tie - b.tie);
+  for (const { a, b } of pairs) {
+    if (blocked.has(a.id) || blocked.has(b.id)) continue;
+    const ball = s.ball.owner === a.id || s.ball.owner === b.id;
+    const av = contestValue(s, a, ball ? 'ball' : 'body', modifier(a, b, !targets.has(a.id)));
+    const bv = contestValue(s, b, ball ? 'ball' : 'body', modifier(b, a, !targets.has(b.id)));
+    const winner = av === bv ? null : av > bv ? a : b, loser = winner === a ? b : a;
+    const contact = `${playerName(a)}と${playerName(b)}が競り合い（判定 ${av} 対 ${bv}）`;
+    // Ball contests on crossing edges must not cancel the pre-booked movement.
+    // Only a physical endpoint conflict forces a stop in a ball contest.
+    const endpointConflict = same(targets.get(a.id) || a, targets.get(b.id) || b);
+    if (!ball || endpointConflict) {
+      if (!winner) { blocked.add(a.id); blocked.add(b.id); }
+      else if (targets.has(loser.id)) blocked.add(loser.id);
+      else if (targets.has(winner.id)) blocked.add(winner.id);
+    }
+    if (ball) {
+      const holder = player(s, s.ball.owner);
+      const at = targets.get(holder.id) || holder;
+      const vector = { x: at.x - holder.x || holder.facing.x, y: at.y - holder.y || holder.facing.y };
+      if (winner && (Math.abs(av - bv) >= C.contact.decisive || random(s) < C.contact.narrowWin)) {
+        own(s, winner, '競り合い');
+        emit(s, 'contact', `${contact}。${playerName(winner)}が競り勝つ。${holder.id === winner.id ? 'ボールを守った' : `${playerName(holder)}からボールを奪った`}`, { values: [av, bv], players: [a.id, b.id], winner: winner.id });
+      } else {
+        deflect(s, at, vector, holder.team, [a.id, b.id]);
+        emit(s, 'contact', `${contact}。${winner ? `${playerName(winner)}が優勢だが保持できず` : '互角'}、ボールが弾かれてルーズになる`, { values: [av, bv], players: [a.id, b.id], winner: null });
+      }
+    } else emit(s, 'contact', `${contact}。${winner ? `${playerName(winner)}が競り勝つ` : '互角で両者停止'}（ボールなしの身体接触）`, { values: [av, bv], players: [a.id, b.id], winner: winner?.id ?? null });
+    const before = [a.reserve, b.reserve];
+    a.reserve = Math.max(0, a.reserve - C.contact.reserveLoss);
+    b.reserve = Math.max(0, b.reserve - C.contact.reserveLoss);
+    emit(s, 'reserve-loss', `競り合いで余力消耗：${playerName(a)} ${before[0]}→${a.reserve}、${playerName(b)} ${before[1]}→${b.reserve}。次の接触・追加ドリブルに反映`, { players: [a.id, b.id], before, after: [a.reserve, b.reserve] });
+  }
+  // A new holder can run out of extra AP during contact resolution itself.
+  for (const p of due) if (targets.has(p.id) && s.ball.owner === p.id && p.pending?.a.type === 'move' && p.reserve < 1) {
+    blocked.add(p.id); emit(s, 'stop', `${playerName(p)}: 追加AP不足、保持して停止`, { player: p.id });
+  }
+  // Propagate blocked destinations, preventing overlaps after swaps or chains.
+  for (let iteration = 0; iteration < s.players.length; iteration++) {
+    let changed = false;
+    for (const p of due) {
+      if (!targets.has(p.id) || blocked.has(p.id)) continue;
+      if (s.players.some(q => q.team !== p.team && (!targets.has(q.id) || blocked.has(q.id)) && same(targets.get(p.id), q))) {
+        blocked.add(p.id); changed = true;
+      }
+    }
+    if (!changed) break;
+  }
+  for (const p of due) {
+    if (!p.pending) continue;
+    const a = p.pending.a; p.pending = null;
+    if (!targets.has(p.id)) continue;
+    if (blocked.has(p.id)) { p.stopped = true; emit(s, 'stop', `${playerName(p)}は進入できず (${p.x},${p.y}) で停止`, { player: p.id }); continue; }
+    const holding = s.ball.owner === p.id;
+    if (holding && a.type === 'move') {
+      if (p.reserve < 1) { p.stopped = true; emit(s, 'stop', `${playerName(p)}: 追加AP不足、保持して停止`, { player: p.id }); continue; }
+      p.reserve--;
+    }
+    spend(p, holding ? 2 : 1);
+    const wasNear = Math.abs(goalX(s, p.team) - p.x) <= 3;
+    p.facing = { x: a.to.x - p.x, y: a.to.y - p.y }; p.x = a.to.x; p.y = a.to.y; p.moved = true;
+    emit(s, 'move', `${playerName(p)}が${holding ? 'ドリブル' : '移動'} (${old.get(p.id).x},${old.get(p.id).y}) → (${p.x},${p.y})。${holding ? 2 : 1}AP消費${holding && a.type === 'move' ? '（余力から追加1AP）' : ''}`, { player: p.id });
+    if (!wasNear && Math.abs(goalX(s, p.team) - p.x) <= 3) s.stats[p.team].goalAreaArrivals++;
+    if (holding) {
+      s.stats[p.team].forwardDistance += (p.x - old.get(p.id).x) * direction(s, p.team); s.stats[p.team].ballDistanceSamples++;
+      s.ball.x = p.x; s.ball.y = p.y;
+    }
+  }
+  return old;
+}
+function ballContacts(s, old, ballOld, movedBall) {
+  const f = s.ball.flight;
+  if (s.ball.owner || s.restart) return;
+  if (f && ((C.actions[f.type].launchProtected && f.index === 0) || f.airborne.includes(f.index - 1))) return;
+  const source = f && player(s, f.source);
+  let candidates = s.players.filter(p => same(p, s.ball) || (old && crosses(old.get(p.id), p, ballOld, s.ball)));
+  if (f && C.actions[f.type].shot) {
+    const defenders = s.players.filter(p => p.team !== f.team && ((p.gk && distance(p, s.ball) <= C.shooting.saveRadius) || candidates.includes(p)));
+    const ranked = defenders.map(p => ({ p, tie: random(s) })).sort((a, b) => a.tie - b.tie);
+    for (const { p } of ranked) {
+      if (p.gk) {
+        if (f.attemptedGK.includes(p.id)) continue; f.attemptedGK.push(p.id);
+        const defense = gkSaveValue(s, p, same(p, s.ball));
+        const attack = contestValue(s, source) + f.bonus;
+        emit(s, 'save-check', `${playerName(p)} GKと${playerName(source)}のシュート判定（${Number(defense.toFixed(1))} 対 ${attack}／GK余力補正 +${Number((p.reserve * C.shooting.gkReserveWeight).toFixed(1))}）：${defense >= attack ? (defense - attack >= C.contact.decisive ? 'GKキャッチ成功' : 'GKが弾く') : 'シュートがGKを突破'}`, { players: [p.id, source.id] });
+        if (defense >= attack) {
+          s.stats[p.team].saves++;
+          if (defense - attack >= C.contact.decisive) own(s, p, 'GKキャッチ');
+          else deflect(s, s.ball, { x: direction(s, f.team), y: 0 }, p.team, [p.id, source.id]);
+          return;
+        }
+      } else {
+        if (f.attemptedBlocks.includes(p.id)) continue; f.attemptedBlocks.push(p.id);
+        if (contestValue(s, p) >= contestValue(s, source)) { deflect(s, s.ball, { x: direction(s, f.team), y: 0 }, p.team, [p.id, source.id]); return; }
+      }
+    }
+    return;
+  }
+  candidates = candidates.filter(p => !f || p.id !== f.source);
+  if (!candidates.length) return;
+  const ranked = candidates.map(p => ({ p, value: contestValue(s, p, 'ball', modifier(p, source, !old || same(old.get(p.id), p))), tie: random(s) })).sort((a, b) => b.value - a.value || a.tie - b.tie);
+  const best = ranked[0], enemy = ranked.find(r => r.p.team !== best.p.team);
+  let margin = enemy ? best.value - enemy.value : Infinity;
+  if (f && best.p.team !== f.team) margin = Math.min(margin, best.value - contestValue(s, source));
+  if (margin < 0) return;
+  if (margin === 0 || (margin < C.contact.decisive && random(s) >= C.contact.narrowWin)) {
+    deflect(s, s.ball, { x: f ? direction(s, f.team) : 0, y: 0 }, best.p.team, candidates.map(p => p.id).concat(source ? [source.id] : [])); return;
+  }
+  if (f && best.p.team === f.team && f.type !== 'clear') s.stats[f.team].completedPasses++;
+  own(s, best.p, f ? 'パス受取／カット' : 'ルーズ回収');
+}
+function finishTurn(s) {
+  for (const p of s.players) if (!p.spent) s.stats[p.team].idlePlayers++;
+  s.turnEvents.push({ turn: s.turn, ticks: s.tick, events: s.events.length - s.turnEventStart });
+  s.phase = s.turn >= s.totalTurns ? 'finished' : 'result';
+}
+function step(s) {
+  if (s.phase !== 'running') return false;
+  for (const p of s.players) schedule(s, p);
+  s.tick++; s.totalTicks++;
+  const ballOld = { x: s.ball.x, y: s.ball.y };
+  const due = s.players.filter(p => p.pending && p.pending.due <= s.tick);
+  const old = resolveMoves(s, due.filter(p => p.pending.movement));
+  for (const p of due) if (p.pending?.a.type === 'wait') {
+    p.pending = null;
+    spend(p, C.actions.wait.cost);
+    emit(s, 'wait', `${p.team === 0 ? '青' : '赤'}${p.number}: 待機終了`, { player: p.id });
+  }
+  const kicks = due.filter(p => p.pending && !p.pending.movement).map(p => ({ p, tie: random(s) })).sort((a, b) => a.tie - b.tie);
+  for (const { p } of kicks) { const a = p.pending.a; p.pending = null; kick(s, p, a); }
+  let f = s.ball.flight, movedBall = false;
+  if (f && f.nextTick <= s.tick) {
+    const next = f.route[f.index++];
+    s.stats[f.team].forwardDistance += (next.x - s.ball.x) * direction(s, f.team); s.stats[f.team].ballDistanceSamples++;
+    s.ball.x = next.x; s.ball.y = next.y; movedBall = true;
+    f.nextTick = s.tick + (C.actions[f.type].shot ? C.timing.shot : C.timing.pass);
+  }
+  // Only evaluate a flight at arrival or when a player actually moves onto it.
+  if (!f || movedBall || due.some(p => old && !same(old.get(p.id), p))) ballContacts(s, old, ballOld, movedBall);
+  f = s.ball.flight;
+  if (f && f.index >= f.route.length) {
+    if (C.actions[f.type].shot && s.ball.x === goalX(s, f.team) && C.goalY.includes(s.ball.y)) {
+      s.score[f.team]++; s.stats[f.team].goals++; s.kickoffTeam = 1 - f.team;
+      emit(s, 'goal', `${f.team === 0 ? '青' : '赤'}チーム GOAL!`, { player: f.source }); s.goalPending = true; s.ball.flight = null;
+      finishTurn(s); return false;
+    }
+    s.ball.flight = null;
+    if (C.actions[f.type].shot || !inside(s.ball)) out(s, s.ball, f.team);
+  }
+  if (!s.ball.owner && !s.ball.flight) s.stats[s.ball.lastTeam ?? 0].looseTicks++;
+  if (s.tick >= C.safetyTickLimit) throw new Error('tick上限超過：予約処理の不具合');
+  if (!s.ball.flight && s.players.every(p => !p.pending && (p.stopped || p.cursor >= p.plan.length))) finishTurn(s);
+  return s.phase === 'running';
+}
+function runTurn(s) { startTurn(s); while (s.phase === 'running') step(s); return s; }
+function nextTurn(s) {
+  if (s.phase !== 'result') return false;
+  const half = s.turn === s.totalTurns / 2;
+  if (half) {
+    s.leftTeam = 1 - s.leftTeam;
+    for (const p of s.players) { p.stamina = Math.min(C.stats.stamina, p.stamina + C.halftime.stamina); p.sp = Math.min(C.stats.sp, p.sp + C.halftime.sp); }
+    formation(s, 1 - s.initialLeftTeam); emit(s, 'halftime', 'ハーフタイム：攻守方向交替・体力+60・SP+1');
+  } else if (s.goalPending) formation(s, s.kickoffTeam);
+  else if (s.restart) {
+    const r = s.restart;
+    const safe = [];
+    for (let x = 1; x < C.width; x++) for (let y = 1; y < C.height; y++) {
+      const at = { x, y };
+      if (!s.players.some(q => q.team !== r.team && same(q, at))) safe.push({ ...at, d: distance(at, r), tie: random(s) });
+    }
+    safe.sort((a, b) => a.d - b.d || a.tie - b.tie);
+    const at = safe[0];
+    const p = s.players.filter(p => p.team === r.team).sort((a, b) => distance(a, at) - distance(b, at))[0];
+    p.x = at.x; p.y = at.y;
+    own(s, p, 'アウト再開');
+  }
+  s.goalPending = false; s.restart = null; s.turn++; s.tick = 0; s.phase = 'planning';
+  for (const p of s.players) { p.plan = []; p.reserved = 0; p.reserve = maxAP(p); p.spent = 0; p.pending = null; p.cursor = 0; p.stopped = false; }
+  return true;
+}
+
+return {clone,distance,same,inside,maxAP,player,direction,goalX,random,path,airborneIndices,protectedFlightIndices,gkSaveValue,createMatch,validatePlan,setPlan,contestValue,startTurn,step,runTurn,nextTurn};
+})();
+modules.ai = (() => {
+const { CONFIG: C } = modules.config;
+const { distance, direction, goalX, maxAP, path, player, random, setPlan } = modules.engine;
+
+function planAI(s, p) {
+  const tuning = C.ai[s.tactics[p.team]], dir = direction(s, p.team), owner = player(s, s.ball.owner);
+  const goal = { x: goalX(s, p.team), y: 6 };
+  const actions = [];
+  let pos = { x: p.x, y: p.y }, budget = maxAP(p);
+  function moveTo(target, holding, reserve) {
+    const cost = holding ? 2 : 1;
+    for (const to of path(pos, target)) {
+      if (budget - cost < reserve) break;
+      actions.push({ type: holding ? 'dribble' : 'move', to }); pos = to; budget -= cost;
+    }
+  }
+  if (owner?.id === p.id) {
+    // Clear before considering dribbles, passes or shots. No mid-turn replanning.
+    if (p.gk) {
+      const reach = C.actions.clear.range;
+      const x = Math.max(0, Math.min(C.width, p.x + dir * reach));
+      const to = { x, y: Math.max(p.y - reach, Math.min(p.y + reach, C.height / 2)) };
+      if (distance(p, to) > 0) return [{ type: 'clear', to }];
+      return [];
+    }
+    // First find an affordable dribble + shot sequence, reserving the shot cost.
+    for (const aimY of [6, 5, 7]) {
+      const aim = { x: goal.x, y: aimY };
+      const approach = [{ x: p.x, y: p.y }, ...path(p, { x: goal.x - dir, y: aimY })];
+      for (let n = 0; n < approach.length; n++) {
+        const d = distance(approach[n], aim), type = d <= 3 ? 'shot' : 'longShot';
+        if (d < 1 || d > 6 || n * 2 + C.actions[type].cost + tuning.shotReserve > budget) continue;
+        const result = approach.slice(1, n + 1).map(to => ({ type: 'dribble', to }));
+        result.push({ type, to: aim }); return result;
+      }
+    }
+    const teammates = s.players.filter(q => q.team === p.team && q.id !== p.id && (q.x - p.x) * dir >= 1 && distance(p, q) <= 6)
+      .map(q => ({ q, value: (q.x - p.x) * dir - s.players.filter(e => e.team !== p.team && distance(e, q) <= 1).length * 3 + random(s) }))
+      .sort((a, b) => b.value - a.value);
+    if (teammates.length && random(s) < tuning.passChance) {
+      const target = teammates[0].q;
+      // Target the receiver's next step, making pass timing and reception meaningful.
+      const lead = { x: Math.max(1, Math.min(23, target.x + dir)), y: target.y };
+      const to = distance(p, lead) <= 6 ? lead : { x: target.x, y: target.y };
+      const obstructed = path(p, to).some(pt => s.players.some(e => e.team !== p.team && distance(e, pt) === 0));
+      const type = distance(p, to) <= 3 ? 'pass' : obstructed ? 'airPass' : 'longPass';
+      actions.push({ type, to }); budget -= C.actions[type].cost;
+      moveTo({ x: Math.max(1, Math.min(23, p.x + dir * 3)), y: p.y }, false, tuning.reserve);
+      return actions;
+    }
+    moveTo({ x: goal.x - dir, y: Math.max(4, Math.min(8, p.y)) }, true, tuning.reserve);
+    return actions;
+  }
+  if (p.gk) {
+    const ownX = goalX(s, 1 - p.team);
+    moveTo({ x: ownX + dir, y: Math.max(5, Math.min(7, s.ball.y)) }, false, 2);
+  } else if (!owner) {
+    moveTo(s.ball, false, tuning.defenseReserve);
+  } else if (owner.team === p.team) {
+    const lane = [6, 3, 9, 5, 7][p.number - 1];
+    moveTo({ x: Math.max(2, Math.min(22, Math.max(dir * p.x, dir * owner.x + 2) * dir + dir * tuning.advance)), y: lane }, false, tuning.reserve);
+  } else {
+    const ordered = s.players.filter(q => q.team === p.team && !q.gk).sort((a, b) => distance(a, owner) - distance(b, owner) || a.number - b.number);
+    const rank = ordered.findIndex(q => q.id === p.id);
+    const target = rank < 2 ? { x: owner.x, y: owner.y } : { x: Math.max(1, Math.min(23, owner.x - dir * (rank + 1))), y: rank === 2 ? 4 : 8 };
+    moveTo(target, false, tuning.defenseReserve);
+  }
+  return actions;
+}
+function planAll(s) {
+  // Randomized seeded planning order: no stable team priority in RNG allocation.
+  const order = s.players.map(p => ({ p, key: random(s) })).sort((a, b) => a.key - b.key);
+  for (const { p } of order) setPlan(s, p.id, planAI(s, p));
+  return s;
+}
+
+return {planAI,planAll};
+})();
+modules.simulation = (() => {
+const { createMatch, nextTurn, runTurn } = modules.engine;
+const { planAll } = modules.ai;
+
+function simulate(options) {
+  const s = createMatch(options);
+  while (s.phase !== 'finished') { planAll(s); runTurn(s); if (s.phase === 'result') nextTurn(s); }
+  return matchResult(s);
+}
+function matchResult(s) {
+  const a = s.stats[0], b = s.stats[1], sum = key => a[key] + b[key];
+  return {
+    seed: s.seed, turns: s.totalTurns, initialLeftTeam: s.initialLeftTeam,
+    tacticBlue: s.tactics[0], tacticRed: s.tactics[1], blueGoals: s.score[0], redGoals: s.score[1],
+    goals: sum('goals'), goalDifference: s.score[0] - s.score[1], shots: sum('shots'), onTarget: sum('onTarget'),
+    passes: sum('passes'), completedPasses: sum('completedPasses'), passSuccessRate: sum('passes') ? sum('completedPasses') / sum('passes') : 0,
+    steals: sum('steals'), deflections: sum('deflections'), possessionChanges: sum('possessionChanges'), goalAreaArrivals: sum('goalAreaArrivals'),
+    averageForwardDistance: sum('ballDistanceSamples') ? sum('forwardDistance') / sum('ballDistanceSamples') : 0,
+    forwardDistance: sum('forwardDistance'), ballDistanceSamples: sum('ballDistanceSamples'), looseTicks: sum('looseTicks'), totalTicks: s.totalTicks,
+    idlePlayers: sum('idlePlayers'), saves: sum('saves'), offTarget: sum('offTarget'),
+    finalStamina: s.players.map(p => ({ id: p.id, stamina: p.stamina })),
+    averageFinalStamina: s.players.reduce((v, p) => v + p.stamina, 0) / s.players.length,
+    turnEvents: s.turnEvents, teams: s.stats
+  };
+}
+const mean = arr => arr.reduce((a, b) => a + b, 0) / (arr.length || 1);
+const median = arr => { const a = [...arr].sort((a, b) => a - b), n = a.length; return n ? (a[Math.floor((n - 1) / 2)] + a[Math.floor(n / 2)]) / 2 : 0; };
+function aggregate(matches) {
+  const metrics = {};
+  for (const key of ['goals', 'shots', 'onTarget', 'passes', 'completedPasses', 'steals', 'deflections', 'possessionChanges', 'goalAreaArrivals', 'averageForwardDistance', 'looseTicks', 'idlePlayers', 'saves', 'offTarget', 'averageFinalStamina', 'goalDifference']) {
+    const values = matches.map(m => m[key]), distribution = {};
+    for (const value of values) { const bin = Number.isInteger(value) ? value : Math.round(value * 10) / 10; distribution[bin] = (distribution[bin] || 0) + 1; }
+    metrics[key] = { mean: mean(values), median: median(values), min: values.length ? Math.min(...values) : 0, max: values.length ? Math.max(...values) : 0, distribution, perTurn: mean(matches.map(m => m[key] / m.turns)) };
+  }
+  const passes = matches.reduce((n, m) => n + m.passes, 0);
+  const sideGoals = side => mean(matches.map(m => m.initialLeftTeam === side ? m.blueGoals : m.redGoals));
+  return { count: matches.length, zeroZeroRate: mean(matches.map(m => +(m.goals === 0))), passSuccessRate: passes ? matches.reduce((n, m) => n + m.completedPasses, 0) / passes : 0,
+    blueWinRate: mean(matches.map(m => +(m.blueGoals > m.redGoals))), redWinRate: mean(matches.map(m => +(m.redGoals > m.blueGoals))),
+    initialLeftGoals: sideGoals(0), initialRightGoals: sideGoals(1),
+    kickoffSideGoals: sideGoals(0), nonKickoffSideGoals: sideGoals(1), metrics };
+}
+function toCSV(matches) {
+  if (!matches.length) return '';
+  const keys = Object.keys(matches[0]);
+  const quote = v => `"${String(typeof v === 'object' ? JSON.stringify(v) : v).replaceAll('"', '""')}"`;
+  return '\uFEFF' + [keys.map(quote).join(','), ...matches.map(m => keys.map(k => quote(m[k])).join(','))].join('\r\n');
+}
+
+return {simulate,matchResult,aggregate,toCSV};
+})();
+modules.planning = (() => {
+// UI has one movement command. Reserve for the expected possession state;
+// the engine still checks actual possession at each step.
+function automaticMovementPlan(state, id, actions) {
+  let expectedBall = state.ball.owner === id;
+  return actions.map(action => {
+    const a = structuredClone(action);
+    if (a.type === 'wait') expectedBall = true; // Waiting for a reception.
+    else if (a.type === 'move' || a.type === 'dribble') a.type = expectedBall ? 'dribble' : 'move';
+    else expectedBall = false;
+    return a;
+  });
+}
+
+return {automaticMovementPlan};
+})();
+modules.hotseat = (() => {
+const { clone, setPlan, player, validatePlan } = modules.engine;
+
+// base includes the ONE AI planning pass for this turn. Views never contain
+// another human's submitted orders, even after that human has committed.
+function createPlanningRound(state) {
+  if (state.phase !== 'planning') throw new Error('指示受付中のみ開始できます');
+  return { base: clone(state), submissions: [null, null] };
+}
+function teamPlanningView(round, team) {
+  if (team !== 0 && team !== 1) throw new Error('無効なチームです');
+  return clone(round.base);
+}
+function commitTeam(round, team, view, selectedIds) {
+  if (round.submissions[team]) throw new Error('このチームは確定済みです');
+  if (view.turn !== round.base.turn || view.phase !== 'planning') throw new Error('ターンが一致しません');
+  if (new Set(selectedIds).size !== 2 || selectedIds.length !== 2 || selectedIds.some(id => player(round.base, id)?.team !== team)) throw new Error('自チームの2人を選択してください');
+  const orders = round.base.players.filter(p => p.team === team).map(p => {
+    const actions = selectedIds.includes(p.id) ? player(view, p.id).plan : p.plan;
+    const check = validatePlan(round.base, p.id, actions);
+    if (!check.valid) throw new Error(check.error);
+    return { player: p.id, actions: clone(actions), reservedAP: check.cost, reserveAP: check.reserve };
+  });
+  round.submissions[team] = { team, selectedPlayers: [...selectedIds], orders };
+}
+function executionState(round) {
+  if (round.submissions.some(s => !s)) throw new Error('両チームの指示確定が必要です');
+  const result = clone(round.base);
+  for (const submission of round.submissions) for (const order of submission.orders) setPlan(result, order.player, order.actions);
+  result.manualByTurn ??= {};
+  result.manualByTurn[result.turn] = round.submissions.flatMap(s => s.selectedPlayers);
+  return result;
+}
+
+return {createPlanningRound,teamPlanningView,commitTeam,executionState};
+})();
+modules.matchlog = (() => {
+const { CONFIG } = modules.config;
+const { clone } = modules.engine;
+const { matchResult } = modules.simulation;
+
+// Metadata version: rules are unchanged from the prior balance adjustment.
+const RULE_VERSION = 'mvp-balance-2026-10-30-v1';
+const LOG_VERSION = 1;
+function matchSnapshot(s) {
+  return clone({ turn: s.turn, phase: s.phase, tick: s.tick, totalTurns: s.totalTurns,
+    score: s.score, leftTeam: s.leftTeam, initialLeftTeam: s.initialLeftTeam,
+    rng: s.rng, players: s.players, ball: s.ball, stats: s.stats,
+    totalTicks: s.totalTicks, lastOwner: s.lastOwner, kickoffTeam: s.kickoffTeam,
+    restart: s.restart, goalPending: !!s.goalPending });
+}
+function createMatchLog(s, mode) {
+  return { schemaVersion: LOG_VERSION, ruleVersion: RULE_VERSION, mode,
+    seed: s.seed, totalTurns: s.totalTurns, tactics: clone(s.tactics),
+    config: clone(CONFIG), initialState: matchSnapshot(s), turns: [], final: null };
+}
+function recordOrders(log, start, execution, selectedByTeam) {
+  if (log.turns.some(t => t.turn === execution.turn)) throw new Error('ターンの二重記録です');
+  const record = { turn: execution.turn, startState: clone(start),
+    executionRng: execution.rng,
+    teams: [0, 1].map(team => ({ team, selectedPlayers: [...selectedByTeam[team]],
+      orders: execution.players.filter(p => p.team === team).map(p => ({ player: p.id,
+        controller: selectedByTeam[team].includes(p.id) ? 'human' : 'ai',
+        actions: clone(p.plan), reservedAP: p.reserved, reserveAP: p.reserve })) })),
+    events: [], endState: null };
+  log.turns.push(record);
+}
+function recordResult(log, s) {
+  const record = log.turns.find(t => t.turn === s.turn);
+  if (!record || record.endState) throw new Error('開始記録なし、または記録済みです');
+  record.events = clone(s.events.filter(e => e.turn === s.turn));
+  record.endState = matchSnapshot(s);
+  if (s.phase === 'finished') log.final = { score: clone(s.score), statistics: matchResult(s), state: matchSnapshot(s) };
+}
+
+return {RULE_VERSION,LOG_VERSION,matchSnapshot,createMatchLog,recordOrders,recordResult};
+})();
+modules.ui = (() => {
+const { CONFIG: C, LABELS } = modules.config;
+const { createMatch, clone, player, maxAP, path, protectedFlightIndices, direction, setPlan, startTurn, step, nextTurn, validatePlan } = modules.engine;
+const { planAll } = modules.ai;
+const { simulate, aggregate, toCSV } = modules.simulation;
+const { automaticMovementPlan } = modules.planning;
+const { createPlanningRound, teamPlanningView, commitTeam, executionState } = modules.hotseat;
+const { createMatchLog, matchSnapshot, recordOrders, recordResult } = modules.matchlog;
+
+const $ = id => document.getElementById(id);
+let state, selected, controlled = new Set(), aiPlans = {}, timer = null, batchResults = [], batchSummaries = {}, matchMode = 'play';
+let manualDrafts = {};
+let activeTeam = 0, planningRound = null, handoff = null, matchLog = null, turnStart = null;
+let pendingTarget = null, expanded = false, gesture = null;
+const teamName = team => team === 0 ? '青' : '赤';
+const manualMode = () => matchMode !== 'watch';
+const canInput = () => !handoff && state.phase === 'planning' && manualMode();
+const esc = str => String(str).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
+const XY = p => ({ x: 40 + p.x * 40, y: 40 + p.y * 40 });
+const point = p => { const q = XY(p); return `${q.x},${q.y}`; };
+const message = text => { $('notice').textContent = text; };
+function stopTimer() { if (timer) clearInterval(timer); timer = null; }
+function prepare() {
+  turnStart = matchSnapshot(state);
+  planAll(state); aiPlans = Object.fromEntries(state.players.map(p => [p.id, clone(p.plan)]));
+  planningRound = matchMode === 'hotseat' ? createPlanningRound(state) : null;
+  if (planningRound) state = teamPlanningView(planningRound, 0);
+  prepareTeam(0);
+  handoff = matchMode === 'hotseat' ? 'blue' : null;
+  render();
+}
+function prepareTeam(team) {
+  pendingTarget = null; expanded = false;
+  document.querySelector('.pitch-wrap').classList.remove('expanded');
+  document.querySelector('.pitch-wrap').scrollTo(0, 0);
+  activeTeam = team;
+  manualDrafts = {};
+  controlled = new Set();
+  if (manualMode()) {
+    const owner = player(state, state.ball.owner);
+    const choices = state.players.filter(p => p.team === team && !p.gk).sort((a, b) => (Math.abs(a.x - state.ball.x) + Math.abs(a.y - state.ball.y)) - (Math.abs(b.x - state.ball.x) + Math.abs(b.y - state.ball.y)));
+    if (owner?.team === team) controlled.add(owner.id);
+    for (const p of choices) { if (controlled.size >= 2) break; controlled.add(p.id); }
+    for (const id of controlled) setPlan(state, id, []);
+    selected = [...controlled][0];
+  } else selected = `${team}-3`;
+  $('action').value = 'select';
+}
+function newMatch() {
+  stopTimer(); matchMode = $('mode').value;
+  state = createMatch({ seed: Number($('seed').value) >>> 0, turns: Number($('turns').value), tactics: [$('blueTactic').value, $('redTactic').value] });
+  matchLog = createMatchLog(state, matchMode);
+  prepare(); message(manualMode() ? '操作する2人を選び、交点をクリックして予約。何も予約しない選手は待機します。' : 'AIが全員の指示を予約しました。同時実行で観戦を始めます。');
+}
+function select(id) {
+  if (handoff) return;
+  pendingTarget = null;
+  const p = player(state, id);
+  if (p.team !== activeTeam) { message('相手の予測はターン開始時のAI経路の先1交点のみです。'); return; }
+  if (canInput() && !controlled.has(id)) {
+    if (controlled.size >= 2) {
+      const outgoing = controlled.has(selected) ? selected : [...controlled][0];
+      manualDrafts[outgoing] = clone(player(state, outgoing).plan);
+      controlled.delete(outgoing); setPlan(state, outgoing, aiPlans[outgoing]);
+      message(`${teamName(activeTeam)}${player(state, outgoing).number}から${teamName(activeTeam)}${p.number}へ操作枠を交替。もう1人の予約は維持します。`);
+    }
+    controlled.add(id); setPlan(state, id, manualDrafts[id] || []);
+  }
+  selected = id; render();
+}
+function endPosition(p) {
+  let pos = { x: p.x, y: p.y }, holding = state.ball.owner === p.id;
+  for (const a of p.plan) {
+    if (a.type === 'move' || a.type === 'dribble') { pos = a.to; if (a.type === 'dribble') holding = true; }
+    else if (a.type !== 'wait') holding = false;
+  }
+  return { pos, holding };
+}
+function addOrder(to) {
+  if (!canInput() || !controlled.has(selected)) return;
+  const p = player(state, selected), { pos, holding } = endPosition(p);
+  let type = $('action').value, extra;
+  if (type === 'select') { message('選手を選択後、行動メニューで移動やパスを選んでください。'); return; }
+  if (type === 'wait') extra = [{ type: 'wait' }];
+  else if (type === 'move' || type === 'dribble') extra = path(pos, to).map(to => ({ type: type === 'dribble' || holding ? 'dribble' : 'move', to }));
+  else extra = [{ type, to }];
+  const actions = automaticMovementPlan(state, p.id, [...p.plan, ...extra]), check = validatePlan(state, p.id, actions);
+  if (!check.valid) { message(check.error); return; }
+  setPlan(state, p.id, actions); pendingTarget = null; render(); message(`${p.number}番の予約を更新。予約 ${check.cost} AP / 余力 ${check.reserve} AP`);
+}
+function pitch() {
+  let svg = '<defs><pattern id="dots" x="40" y="40" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="0" cy="0" r="1.7" fill="#86a795" opacity=".6"/></pattern></defs>';
+  for (let x = 0; x < 24; x += 3) svg += `<rect x="${40 + x * 40}" y="40" width="120" height="480" fill="${x % 6 ? '#244c40' : '#20473c'}"/>`;
+  svg += '<rect x="40" y="40" width="960" height="480" fill="url(#dots)" stroke="#8fb59b" stroke-width="2"/><path d="M520 40V520 M40 160H160V400H40 M1000 160H880V400H1000" fill="none" stroke="#8fb59b" stroke-width="2"/><circle cx="520" cy="280" r="80" fill="none" stroke="#8fb59b" stroke-width="2"/><circle cx="520" cy="280" r="4" fill="#b3cdb5"/><path d="M40 240H22V320H40 M1000 240H1018V320H1000" fill="#182e29" stroke="#dcf0d6" stroke-width="3"/>';
+  for (let x = 0; x <= 24; x += 2) svg += `<text x="${40 + 40 * x}" y="22" text-anchor="middle" fill="#a4bcb0" font-size="10">${x}</text>`;
+  for (let y = 0; y <= 12; y += 2) svg += `<text x="12" y="${44 + 40 * y}" text-anchor="middle" fill="#a4bcb0" font-size="10">${y}</text>`;
+  if (state.phase === 'planning') for (const p of state.players) {
+    const manual = manualMode() && p.team === activeTeam && controlled.has(p.id), limit = manual ? Infinity : p.team === activeTeam ? 2 : 1;
+    let pos = { x: p.x, y: p.y }, moves = 0;
+    const color = manual ? (activeTeam === 0 ? '#70d3ff' : '#ffa088') : p.team === activeTeam ? '#b4ccc0' : '#ebae96';
+    for (const a of p.plan) {
+      if (a.type === 'wait') {
+        if (manual) { const q = XY(pos); svg += `<text x="${q.x + 20}" y="${q.y - 20}" fill="#f9dd7e" font-size="12">待機</text>`; }
+        continue;
+      }
+      if (a.type === 'move' || a.type === 'dribble') {
+        if (++moves > limit) break;
+        const end = XY(a.to); svg += `<polyline points="${point(pos)} ${point(a.to)}" fill="none" stroke="${color}" stroke-width="${manual ? 4 : 3}" stroke-dasharray="7 5" opacity=".85"/><circle cx="${end.x}" cy="${end.y}" r="5" fill="${color}"/>`; pos = a.to;
+      } else if (manual) {
+        const route = path(pos, a.to), air = protectedFlightIndices(route, a.type);
+        svg += `<polyline points="${[pos, ...route].map(point).join(' ')}" fill="none" stroke="#f9dd7e" stroke-width="3" stroke-dasharray="3 6"/>`;
+        for (let i = 0; i < route.length; i++) { const q = XY(route[i]); svg += `<circle cx="${q.x}" cy="${q.y}" r="${air.includes(i) ? 9 : 4}" fill="${air.includes(i) ? 'none' : '#f9dd7e'}" stroke="#f9dd7e" stroke-width="2"/>`; }
+      }
+    }
+  }
+  const f = state.ball.flight;
+  if (f) for (let i = f.index; i < f.route.length; i++) { const q = XY(f.route[i]); svg += `<circle cx="${q.x}" cy="${q.y}" r="${f.airborne.includes(i) ? 9 : 3}" fill="${f.airborne.includes(i) ? 'none' : '#eadb94'}" stroke="#eadb94" opacity=".7"/>`; }
+  // Every grid vertex has an explicit click target; SVG scales responsively.
+  for (let x = 0; x <= 24; x++) for (let y = 0; y <= 12; y++) { const q = XY({ x, y }); svg += `<rect class="hit" data-x="${x}" data-y="${y}" x="${q.x - 20}" y="${q.y - 20}" width="40" height="40" fill="transparent"/>`; }
+  for (const p of state.players) {
+    const q = XY(p), color = p.team === 0 ? '#78d3ff' : '#ffa088';
+    svg += `<g class="player" data-player="${p.id}"><title>${p.team === 0 ? '青' : '赤'} ${p.number}${p.gk ? ' GK' : ''} / 体力 ${p.stamina}</title>`;
+    if (p.id === selected) svg += `<circle cx="${q.x}" cy="${q.y}" r="23" fill="none" stroke="#ebffcd" stroke-width="2"/>`;
+    if (p.gk) svg += `<rect x="${q.x - 19}" y="${q.y - 19}" width="38" height="38" rx="5" fill="none" stroke="${color}" stroke-width="2"/>`;
+    svg += `<circle cx="${q.x}" cy="${q.y}" r="15" fill="${color}" stroke="#102c30" stroke-width="3"/><text x="${q.x}" y="${q.y + 5}" font-size="14" text-anchor="middle" fill="#0c2530" font-weight="750">${p.number}</text>`;
+    if (controlled.has(p.id)) svg += `<circle cx="${q.x + 15}" cy="${q.y - 15}" r="4" fill="#caff8a"/>`;
+    svg += '</g>';
+  }
+  const b = XY(state.ball), offset = state.ball.owner ? 13 : 0;
+  svg += `<g pointer-events="none"><circle cx="${b.x + offset}" cy="${b.y + offset}" r="8" fill="#fffce6" stroke="#203e32" stroke-width="2"/><circle cx="${b.x + offset}" cy="${b.y + offset}" r="2.5" fill="#344a3c"/></g>`;
+  if (pendingTarget) {
+    const q = XY(pendingTarget);
+    svg += `<g pointer-events="none"><circle cx="${q.x}" cy="${q.y}" r="19" fill="#f9dd7e55" stroke="#ffe886" stroke-width="4"/><path d="M${q.x - 26} ${q.y}H${q.x + 26} M${q.x} ${q.y - 26}V${q.y + 26}" stroke="#ffe886" stroke-width="2"/></g>`;
+  }
+  $('pitch').innerHTML = svg;
+}
+function render() {
+  $('handoff').hidden = !handoff;
+  $('workspace').hidden = !!handoff;
+  $('lowerPanels').hidden = !!handoff;
+  document.querySelector('.settings').hidden = !!handoff;
+  if (handoff) {
+    pendingTarget = null;
+    $('touchPending').hidden = true;
+    $('targetLabel').textContent = ''; $('quickStats').textContent = '';
+    $('quickPlayer').replaceChildren(); $('quickAction').value = 'select';
+    // Remove the previous player's instructions from the DOM, not just cover them.
+    for (const id of ['pitch', 'roster', 'selectedInfo', 'orders', 'planSummary', 'notice', 'events', 'phaseLabel']) $(id).replaceChildren();
+    $('action').value = 'select';
+    $('handoffTitle').textContent = handoff === 'run' ? '両チームの指示が確定しました' : `${handoff === 'blue' ? '青' : '赤'}プレイヤーに交代してください`;
+    $('handoffText').textContent = handoff === 'run' ? '2人で画面を見て、同時実行を開始してください。' : `ターン${state.turn}。相手の指示は非表示です。準備できたプレイヤーだけが次へ進んでください。`;
+    $('ready').textContent = handoff === 'run' ? '同時実行を開始' : `${handoff === 'blue' ? '青' : '赤'}プレイヤーの準備完了`;
+    $('ready').focus();
+    return;
+  }
+  pitch(); const planning = state.phase === 'planning', running = state.phase === 'running', manual = manualMode();
+  $('score').innerHTML = `${state.score[0]} <span>:</span> ${state.score[1]}`;
+  $('turnLabel').textContent = `TURN ${String(state.turn).padStart(2, '0')} / ${state.totalTurns} · 残り ${state.totalTurns - state.turn + (state.phase === 'finished' ? 0 : 1)}`;
+  $('phaseLabel').textContent = ({ planning: '01 / PLANNING · 指示を予約', running: '02 / EXECUTING · 全員同時実行', result: '03 / RESULT · 次ターンへ', finished: 'FULL TIME · 試合終了' })[state.phase];
+  $('activeTeam').textContent = matchMode === 'hotseat' ? (planning ? `${teamName(activeTeam)}チームが指示中 · ${activeTeam === 0 ? '1' : '2'} / 2` : state.phase === 'finished' ? 'ローカル対人戦 · 試合終了' : 'ローカル対人戦 · 両チーム同時実行') : matchMode === 'play' ? '対AI戦 · 青チームを操作' : 'AI同士の観戦';
+  $('activeTeam').className = activeTeam === 0 ? 'turn-owner blue' : 'turn-owner red';
+  $('attackDirection').textContent = `${teamName(activeTeam)}の攻撃方向 ${direction(state, activeTeam) === 1 ? '→' : '←'}`;
+  $('tickLabel').textContent = `TICK ${String(state.tick).padStart(2, '0')}`;
+  $('execute').hidden = !planning; $('execute').textContent = matchMode === 'hotseat' ? `${teamName(activeTeam)}の指示を確定` : manual ? '指示確定 → 同時実行' : 'AIの予約を同時実行'; $('execute').disabled = manual && controlled.size !== 2;
+  $('pause').disabled = !running; $('pause').textContent = timer ? '一時停止' : '再生';
+  $('step').disabled = (!running && !planning) || (manual && controlled.size !== 2 && !running) || (matchMode === 'hotseat' && planning);
+  $('matchJson').hidden = state.phase !== 'finished';
+  $('controlCount').textContent = matchMode === 'hotseat' && !planning ? '青2人＋赤2人' : manual ? `${controlled.size} / 2` : 'AI / 10';
+  $('roster').innerHTML = state.players.filter(p => p.team === activeTeam).map(p => `<button class="player-card ${p.id === selected ? 'selected' : ''}" data-select="${p.id}"><span><b>${teamName(p.team)}${p.number.toString().padStart(2, '0')}</b> <span class="role">${p.gk ? 'GOALKEEPER' : 'FIELD PLAYER'}</span> ${state.ball.owner === p.id ? '●' : ''}</span><span class="control">${controlled.has(p.id) ? '操作中' : 'AI'}</span></button>`).join('');
+  const p = player(state, selected), canEdit = planning && manual && controlled.has(selected);
+  $('quickPlayer').innerHTML = state.players.filter(p => p.team === activeTeam).map(p => `<option value="${p.id}">${teamName(p.team)}${p.number}${p.gk ? ' GK' : ''}${controlled.has(p.id) ? ' 操作中' : ' AI'}</option>`).join('');
+  $('quickPlayer').value = selected; $('quickPlayer').disabled = !canInput();
+  $('quickAction').value = $('action').value; $('quickAction').disabled = !canEdit;
+  $('quickStats').textContent = `${teamName(p.team)}${p.number} · 予約 ${p.reserved}/${maxAP(p)} AP · 余力 ${p.reserve} · 体力 ${p.stamina} · SP ${p.sp}`;
+  $('undo').disabled = !canEdit || !p.plan.length;
+  $('zoom').textContent = expanded ? '盤面を全体表示' : '盤面を拡大';
+  $('zoom').setAttribute('aria-pressed', String(expanded));
+  $('touchPending').hidden = !pendingTarget;
+  $('targetLabel').textContent = pendingTarget ? `${LABELS[$('action').value] || '行動'} → (${pendingTarget.x}, ${pendingTarget.y}) 未追加` : '';
+  if (pendingTarget) { $('execute').disabled = true; $('step').disabled = true; }
+  $('selectedInfo').innerHTML = `<div class="section-heading"><h3>${teamName(p.team)} ${p.number}番 ${p.gk ? 'GK' : ''}</h3><span class="mono">PHY ${p.physical} / TEC ${p.technique} / AGI ${p.agility}</span></div><div class="stat-grid"><div><strong>${maxAP(p) - p.spent}/${maxAP(p)}</strong>残AP</div><div><strong>${p.reserve}</strong>余力AP</div><div><strong>${p.stamina}</strong>体力</div><div><strong>${p.sp}</strong>SP</div></div>`;
+  $('clear').disabled = !canEdit; $('action').disabled = !canEdit;
+  $('addWait').disabled = !canEdit;
+  $('addWait').textContent = `待機を追加（${C.timing.wait} tick / ${C.actions.wait.cost} AP）`;
+  // Only owned instructions are shown in full. AI actions stay private.
+  $('orders').innerHTML = controlled.has(p.id) && manual ? p.plan.map((a, i) => `<li><div><span>${LABELS[a.type]}${a.type === 'wait' ? ` · ${C.timing.wait} tick` : ` → ${a.to.x},${a.to.y}`} <small>(${C.actions[a.type].cost} AP)</small></span><span><button class="remove" data-up="${i}" aria-label="行動${i + 1}を前へ" ${!canEdit || !i ? 'disabled' : ''}>↑</button><button class="remove" data-remove="${i}" aria-label="行動${i + 1}以降を取り消す" ${!canEdit ? 'disabled' : ''}>×</button></span></div></li>`).join('') || '<li class="muted">未予約：全APを余力として待機</li>' : '<li class="muted">AIの予約は予測経路のみ表示</li>';
+  $('planSummary').textContent = controlled.has(p.id) && manual ? `予約 ${p.reserved} / ${maxAP(p)} AP · 実消費 ${p.spent} AP` : `AI自律行動 · 実消費 ${p.spent} AP`;
+  const e = state.events.filter(e => !$('manualLogs').checked || e.controlledPlayers?.length).slice(-200).reverse();
+  $('events').innerHTML = e.length ? e.map(e => `<div class="event ${e.type === 'goal' ? 'goal' : ''} ${e.controlledPlayers?.length ? 'manual-event' : ''}"><span class="time">T${e.turn} / ${e.tick}</span><span>${e.controlledPlayers?.length ? `<strong class="manual-tag">操作：${e.controlledPlayers.map(id => `${teamName(player(state, id).team)}${player(state, id).number}`).join('・')}</strong> ` : ''}${esc(e.text)}</span></div>`).join('') : '<p class="muted">該当する行動ログはまだありません。実行時に操作した選手のログを強調します。</p>';
+}
+function confirmHotseat() {
+  if (!canInput() || pendingTarget || matchMode !== 'hotseat') return;
+  commitTeam(planningRound, activeTeam, state, [...controlled]);
+  handoff = activeTeam === 0 ? 'red' : 'run';
+  render();
+}
+function begin(paused = false) {
+  if (handoff || pendingTarget) return;
+  if (state.phase === 'planning') {
+    if (matchMode === 'hotseat' && planningRound.submissions.some(s => !s)) return;
+    if (matchMode === 'play' && controlled.size !== 2) { message('操作する選手を2人選択してください。'); return; }
+    state.manualByTurn ??= {};
+    const selectedByTeam = matchMode === 'hotseat' ? planningRound.submissions.map(s => s.selectedPlayers) : [matchMode === 'play' ? [...controlled] : [], []];
+    state.manualByTurn[state.turn] = selectedByTeam.flat();
+    recordOrders(matchLog, turnStart, state, selectedByTeam);
+    startTurn(state);
+  }
+  if (!paused) play(); else render();
+}
+function tick() {
+  try { step(state); } catch (err) { stopTimer(); message(`実行エラー: ${err.message}`); render(); return; }
+  if (state.phase !== 'running') {
+    stopTimer();
+    recordResult(matchLog, state);
+    if (state.phase === 'result') {
+      const completed = state.turn;
+      nextTurn(state); prepare();
+      message(`ターン${completed}終了 → ターン${state.turn}の指示へ。直前の競り合い・保持・シュート結果は下のログに残っています。`);
+    } else message(`試合終了！ 青 ${state.score[0]} − ${state.score[1]} 赤。新しい試合で再挑戦できます。`);
+  }
+  render();
+}
+function play() { stopTimer(); if (state.phase === 'running') timer = setInterval(tick, Number($('speed').value)); render(); }
+// Native scrolling/pinch remains available. A drag must never become an order.
+$('pitch').addEventListener('pointerdown', e => { gesture = { x: e.clientX, y: e.clientY, type: e.pointerType, moved: false }; });
+$('pitch').addEventListener('pointermove', e => { if (gesture && Math.hypot(e.clientX - gesture.x, e.clientY - gesture.y) > 8) gesture.moved = true; });
+$('pitch').addEventListener('pointercancel', () => { if (gesture) gesture.moved = true; });
+function chooseTarget(to, touch) {
+  if (!canInput()) return;
+  if ((touch || matchMedia('(pointer:coarse), (max-width:1000px)').matches) && $('action').value !== 'select') { pendingTarget = to; render(); }
+  else addOrder(to);
+}
+$('pitch').addEventListener('click', e => {
+  const touch = e.pointerType === 'touch' || e.pointerType === 'pen' || gesture?.type === 'touch' || gesture?.type === 'pen';
+  const moved = gesture?.moved; gesture = null;
+  if (moved) return;
+  const target = e.target.closest('[data-player]');
+  if (target) {
+    const p = player(state, target.dataset.player);
+    if ($('action').value === 'select') select(p.id);
+    else chooseTarget({ x: p.x, y: p.y }, touch);
+    return;
+  }
+  const hit = e.target.closest('[data-x]'); if (hit) chooseTarget({ x: Number(hit.dataset.x), y: Number(hit.dataset.y) }, touch);
+});
+$('roster').addEventListener('click', e => { const b = e.target.closest('[data-select]'); if (b) select(b.dataset.select); });
+$('orders').addEventListener('click', e => {
+  if (!canInput()) return;
+  pendingTarget = null;
+  const up = e.target.closest('[data-up]');
+  if (up) {
+    const p = player(state, selected); let actions = clone(p.plan); const i = Number(up.dataset.up);
+    [actions[i - 1], actions[i]] = [actions[i], actions[i - 1]];
+    actions = automaticMovementPlan(state, p.id, actions);
+    const check = validatePlan(state, selected, actions);
+    if (!check.valid) { message(`順序変更不可: ${check.error}`); return; }
+    setPlan(state, selected, actions); render(); return;
+  }
+  const b = e.target.closest('[data-remove]'); if (!b) return;
+  const p = player(state, selected); setPlan(state, selected, p.plan.slice(0, Number(b.dataset.remove))); render(); message('経路の整合性を保つため、選択した行動以降を取り消しました。');
+});
+$('action').innerHTML = '<option value="select">選手を選択（操作切替）</option>' + Object.entries(LABELS).filter(([key]) => key !== 'dribble').map(([key, value]) => `<option value="${key}">${key === 'move' ? '移動（ドリブル自動）' : value}${key === 'move' ? '' : ` · ${C.actions[key].cost} AP`}</option>`).join('');
+$('quickAction').innerHTML = $('action').innerHTML;
+$('quickAction').onchange = () => { $('action').value = $('quickAction').value; $('action').onchange(); };
+$('quickPlayer').onchange = () => select($('quickPlayer').value);
+$('action').onchange = () => { pendingTarget = null; render(); message($('action').value === 'select'
+  ? '選手選択モード：盤面の味方をクリックして操作対象を切り替えます。'
+  : '行動入力モード：選手の上も着地点にできます。タッチでは位置を確認して「この位置へ追加」を押してください。'); };
+$('acceptTarget').onclick = () => { if (pendingTarget) addOrder(pendingTarget); };
+$('cancelTarget').onclick = () => { pendingTarget = null; render(); };
+$('undo').onclick = () => { if (!canInput()) return; pendingTarget = null; const p = player(state, selected); setPlan(state, selected, p.plan.slice(0, -1)); render(); message('最後の1行動を取り消しました。移動経路は1歩ずつ戻ります。'); };
+$('zoom').onclick = () => {
+  expanded = !expanded;
+  const wrap = document.querySelector('.pitch-wrap'); wrap.classList.toggle('expanded', expanded);
+  render();
+  const p = player(state, selected), svg = $('pitch');
+  wrap.scrollTo({ left: (40 + p.x * 40) / 1040 * svg.clientWidth - wrap.clientWidth / 2, top: (40 + p.y * 40) / 560 * svg.clientHeight - wrap.clientHeight / 2 });
+};
+$('addWait').onclick = () => {
+  if (!canInput()) return;
+  pendingTarget = null;
+  const check = validatePlan(state, selected, [...player(state, selected).plan, { type: 'wait' }]);
+  if (!check.valid) { message(check.error); return; }
+  setPlan(state, selected, [...player(state, selected).plan, { type: 'wait' }]); render();
+  message(`待機を追加：${C.timing.wait} tick / 0 AP。受け取り予定のドリブルやパスを続けて予約できます。`);
+};
+$('newMatch').onclick = newMatch;
+$('manualLogs').onchange = render;
+$('clear').onclick = () => { if (!canInput()) return; pendingTarget = null; setPlan(state, selected, []); render(); };
+$('execute').onclick = () => matchMode === 'hotseat' ? confirmHotseat() : begin();
+$('ready').onclick = () => {
+  const destination = handoff;
+  if (!destination) return;
+  handoff = null;
+  if (destination === 'red') { state = teamPlanningView(planningRound, 1); prepareTeam(1); }
+  if (destination === 'run') {
+    state = executionState(planningRound);
+    controlled = new Set(planningRound.submissions.flatMap(s => s.selectedPlayers));
+    begin();
+  } else {
+    render(); message(`${teamName(activeTeam)}チームの2人に指示してください。相手の予測はターン開始時のまま固定されています。`);
+    $('execute').focus();
+  }
+};
+$('pause').onclick = () => { if (timer) { stopTimer(); render(); } else play(); };
+$('step').onclick = () => { stopTimer(); if (state.phase === 'planning') begin(true); if (state.phase === 'running') tick(); };
+$('speed').onchange = () => { if (timer) play(); };
+function download(name, data, type) {
+  const url = URL.createObjectURL(new Blob([data], { type })), a = document.createElement('a'); a.href = url; a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+$('matchJson').onclick = () => {
+  if (state.phase !== 'finished' || !matchLog.final) return;
+  download(`soccer-${matchMode}-seed-${state.seed}-${state.totalTurns}turns.json`, JSON.stringify(matchLog, null, 2), 'application/json');
+};
+$('csv').onclick = () => download('soccer-matches.csv', toCSV(batchResults), 'text/csv;charset=utf-8');
+$('json').onclick = () => download('soccer-summary.json', JSON.stringify({ config: C, summaries: batchSummaries, matches: batchResults }, null, 2), 'application/json');
+$('batch').onclick = async () => {
+  const lengths = $('batchTurns').value === 'both' ? [10, 20] : [Number($('batchTurns').value)];
+  const seed = Number($('seed').value) >>> 0, tactics = [$('blueTactic').value, $('redTactic').value];
+  $('batch').disabled = true; $('csv').disabled = true; $('json').disabled = true; $('progress').hidden = false; $('progress').max = lengths.length * 100; $('progress').value = 0;
+  batchResults = []; batchSummaries = {}; let count = 0;
+  try {
+    for (const turns of lengths) {
+      const matches = [];
+      for (let i = 0; i < 100; i++) {
+        matches.push(simulate({ seed: seed + Math.floor(i / 2), turns, leftTeam: i % 2, tactics }));
+        $('progress').value = ++count;
+        if (i % 5 === 0) { $('batchStatus').textContent = `${count} / ${lengths.length * 100} 試合完了`; await new Promise(r => setTimeout(r, 0)); }
+      }
+      batchResults.push(...matches); batchSummaries[turns] = aggregate(matches);
+    }
+    $('summary').innerHTML = `<table><thead><tr><th>試合平均</th>${lengths.map(n => `<th>${n}ターン</th>`).join('')}</tr></thead><tbody>${[
+      ['得点', s => s.metrics.goals.mean.toFixed(2)], ['シュート', s => s.metrics.shots.mean.toFixed(2)], ['得点 / ターン', s => s.metrics.goals.perTurn.toFixed(3)], ['パス成功率', s => (s.passSuccessRate * 100).toFixed(1) + '%'], ['奪取', s => s.metrics.steals.mean.toFixed(2)], ['GKセーブ', s => s.metrics.saves.mean.toFixed(2)], ['0–0率', s => (s.zeroZeroRate * 100).toFixed(1) + '%']
+    ].map(([label, f]) => `<tr><td>${label}</td>${lengths.map(n => `<td>${f(batchSummaries[n])}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+    $('allStats').textContent = JSON.stringify(batchSummaries, null, 2); $('batchStatus').textContent = `${count}試合完了 / シード ${seed}〜${seed + 49} / 左右交替ペア / クラッシュ 0`;
+    $('csv').disabled = false; $('json').disabled = false;
+  } catch (error) { $('batchStatus').textContent = `検証失敗 (${count}試合完了): ${error.message}`; }
+  finally { $('batch').disabled = false; }
+};
+$('turns').value = String(C.defaultTurns);
+newMatch();
+
+return {};
+})();
+
+</script>
+</body>
+</html>
